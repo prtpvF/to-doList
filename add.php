@@ -1,11 +1,11 @@
 <?php
+global $pdo;
 $task = $_POST['task'];
 if($task == ''){
     echo 'Введите задание';
     exit();
 }
-$dsn = 'mysql:host=localhost;dbname=to-do';
-$pdo = new PDO($dsn,'root','');
+require 'configDB.php';
 
 $sql = 'INSERT INTO tasks(task) VALUES (:task)';
 $query=$pdo->prepare($sql);
